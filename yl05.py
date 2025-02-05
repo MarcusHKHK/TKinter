@@ -1,20 +1,12 @@
-#Marcus Krutto 04.02.25
+#Marcus Krutto 05.02.25
 #Tkinter yl 3
 
 import tkinter as tk
 
 def main():
     aken = tk.Tk()
-    aken.geometry("200x350")
+    aken.geometry("400x350")
     aken.resizable(False, False)
-
-    # Funktsioon, mis kuvab sisestused
-    # def kuva_sisestus():
-    #     tekst1 = sisestus1.get()  # Võtab esimese sisestuse
-    #     tekst2 = sisestus2.get()  # Võtab teise sisestuse
-    #     tekst3 = sisestus3.get()  # Võtab teise sisestuse
-    #     vastus = tk.Label(aken, text=f"Esimene sisestus: {tekst1}, Teine sisestus: {tekst2}")
-    #     vastus.pack()
 
     def igakuine_makse():
         laensum = int(sisestus1.get())
@@ -23,11 +15,17 @@ def main():
         laenvastus = tk.Label(aken, text=f"Igakuinemakse:  {laensum * kuuineintress / (1 - (1 + kuuineintress) ** -maksete_arv):.2f}")
         laenvastus.pack()
         
-
+    #Raamid
+    frame = tk.Frame(aken)
+    frame.pack(pady=5, padx=5)
+    frame2 = tk.Frame(aken)
+    frame2.pack(pady=5, padx=5)
+    frame3 = tk.Frame(aken)
+    frame3.pack(pady=5, padx=5)
 
     # Esimene sisestusväli
     label = tk.Label(aken, text="Laenu summa (€)", font=("Arial", 10, "bold"), fg="black").pack()
-    sisestus1 = tk.Entry(aken)
+    sisestus1 = tk.Entry(frame)
     sisestus1.pack(pady=20)
     # Teine sisestusväli
     label = tk.Label(aken, text="Aastane intressimäär (%)", font=("Arial", 10, "bold"), fg="black").pack()
