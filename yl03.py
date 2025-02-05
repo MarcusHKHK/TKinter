@@ -14,7 +14,7 @@ def main():
         vastus.pack()
 
     # Esimene sisestusväli
-    label = tk.Label(aken, text="Laenu summa (€)", font=("Arial", 10, "bold"), fg="black").pack()
+    label = tk.Label(aken, text="Laenu summa (€)", font=("Arial", 10, "bold"), fg="black").pack(pady=(0, 10))
     sisestus1 = tk.Entry(aken)
     sisestus1.pack(pady=20)
     # Teine sisestusväli
