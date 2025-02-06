@@ -5,7 +5,7 @@ import tkinter as tk
 
 def main():
     aken = tk.Tk()
-    aken.geometry("400x350")
+    aken.geometry("300x150")
     aken.resizable(False, False)
 
     def igakuine_makse():
@@ -17,24 +17,24 @@ def main():
         
     #Raamid
     frame = tk.Frame(aken)
-    frame.pack(pady=5, padx=5)
+    frame.pack(pady=5, padx=5, fill="x")
     frame2 = tk.Frame(aken)
-    frame2.pack(pady=5, padx=5)
+    frame2.pack(pady=5, padx=5, fill="x")
     frame3 = tk.Frame(aken)
-    frame3.pack(pady=5, padx=5)
+    frame3.pack(pady=5, padx=5, fill="x")
 
     # Esimene sisestusväli
-    label = tk.Label(aken, text="Laenu summa (€)", font=("Arial", 10, "bold"), fg="black").pack()
+    label1 = tk.Label(frame, text="Laenusumma (€): ", font=("Arial", 10, "bold"), fg="black").pack(side="left")
     sisestus1 = tk.Entry(frame)
-    sisestus1.pack(pady=20)
+    sisestus1.pack(side='left', fill="x", expand="true")
     # Teine sisestusväli
-    label = tk.Label(aken, text="Aastane intressimäär (%)", font=("Arial", 10, "bold"), fg="black").pack()
-    sisestus2 = tk.Entry(aken)
-    sisestus2.pack(pady=20)
+    label2 = tk.Label(frame2, text="Aastane intressimäär (%)", font=("Arial", 10, "bold"), fg="black").pack(side="left")
+    sisestus2 = tk.Entry(frame2)
+    sisestus2.pack(side='left', fill="x", expand="true")
     # Kolmas sisestusväli
-    label = tk.Label(aken, text="Laenuperiood (aastates)", font=("Arial", 10, "bold"), fg="black").pack()
-    sisestus3 = tk.Entry(aken)
-    sisestus3.pack(pady=20)
+    label3 = tk.Label(frame3, text="Laenuperiood (aastates)", font=("Arial", 10, "bold"), fg="black").pack(side="left")
+    sisestus3 = tk.Entry(frame3)
+    sisestus3.pack(side='left', fill="x", expand="true")
     # Nupp, mis käivitab funktsiooni kuva_sisestus
     nupp = tk.Button(aken, text="Arvuta", command=igakuine_makse)
     nupp.pack()
