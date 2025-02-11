@@ -10,12 +10,18 @@ from PIL import Image, ImageOps
 
 #Avamine
 def open_directory():
-    directory = filedialog.askopenfile()
+    directory = filedialog.askdirectory()
     if directory:
         dir_label.config(text=f"Valitud kaust: {directory}")
+        kausta_sisu = os.listdir(directory)
+        for fail in kausta_sisu:
+            file_name, file_extension = os.path.splitext(fail)
+            if file_extension == ".jpg":
+                inputtxt.insert(tk.INSERT, fail+"\n")
+            if file_extension == ".jpeg":
+                inputtxt.insert(tk.INSERT, fail+"\n")
     else:
         dir_label.config(text="Kausta ei valitud.")
-
 
 #Salvestamine
 def save_image():
@@ -27,13 +33,13 @@ aken.title("pildi suuruse muutmine")
 aken.geometry("450x400")
 aken.resizable(False, False)
 
-label = tk.Label(aken, text="Pildi suurus 200x200", font=("Arial", 16, "bold"))
+label = tk.Label(aken, text="Pildi suurus 200x200", font=("Arial", 24, "bold"))
 label.pack(pady=10)
 
 inputtxt = tk.Text(aken, height=10, width=50)
 inputtxt.pack(pady=10)
 
-open_button = tk.Button(aken, text="Ava pilt", command=open_directory)
+open_button = tk.Button(aken, text="Ava kaust", command=open_directory)
 open_button.pack(pady=10)
 
 save_button = tk.Button(aken, text="Salvesta pilt", command=save_image)
