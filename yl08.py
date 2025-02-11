@@ -1,39 +1,46 @@
-#Marcus Krutto 08.02.25
+#Marcus Krutto 08.02.25 ; 11.02.25
 #Tkinter yl 08
 
+#Import
+import os
 import tkinter as tk
 from tkinter import filedialog
 from pathlib import Path
+from PIL import Image, ImageOps
 
-# Kasutajaliides sisaldab järgnevaid elemente:
-# Silt (label), mis annab teavet programmi funktsionaalsuse kohta
-# Tekstiväli (text field), mis kuvab teavet selle kohta, mida programmiga teha saab
-# Nupp “Vali failid”
-# Nupule vajutades avaneb failivaliku dialoog, mis lubab valida ainult JPG ja JPEG failitüüpe.
-# Valitud failide nimed kuvatakse tekstiväljal eraldi ridadel.
-# Taga, et kasutajal pole võimalik valida sama faili uuesti, et vältida topelttöötlust.
-# Nupp “Salvesta pildid”
-# Nupule vajutades avaneb kausta valiku dialoog, kuhu saab salvestada töödeldud pildid
-# Töödeldakse tekstiväljale lisatud failide alusel ja iga pildi suurus muudetakse 200×200 piksliks enne salvestamist
-# Valitud pildid salvestatakse määratud kausta pärast nende suuruse muutmist image.save(path/filename)
-
-
+#Avamine
 def open_directory():
-    directory = filedialog.askdirectory()
+    directory = filedialog.askopenfile()
     if directory:
         dir_label.config(text=f"Valitud kaust: {directory}")
     else:
         dir_label.config(text="Kausta ei valitud.")
 
+
+#Salvestamine
+def save_image():
+    pass
+
+
 aken = tk.Tk()
-aken.title("Peamine aken")
+aken.title("pildi suuruse muutmine")
 aken.geometry("450x400")
 aken.resizable(False, False)
+
+label = tk.Label(aken, text="Pildi suurus 200x200", font=("Arial", 16, "bold"))
+label.pack(pady=10)
+
+inputtxt = tk.Text(aken, height=10, width=50)
+inputtxt.pack(pady=10)
 
 open_button = tk.Button(aken, text="Ava pilt", command=open_directory)
 open_button.pack(pady=10)
 
-dir_label = tk.Label(aken, text="tere")
+save_button = tk.Button(aken, text="Salvesta pilt", command=save_image)
+save_button.pack(pady=10)
+
+dir_label = tk.Label(aken, text="")
 dir_label.pack(pady=10)
+
 
 aken.mainloop()

@@ -13,7 +13,8 @@ def valideeriTeksti(*args):
             sugu = "naine"
         else:
             sugu = "mees"
-        validation_label.config(text=sugu, fg="green")
+        synna = f"{text[5]}{text[6]}.{text[3]}{text[4]}.{text[1]}{text[2]}"
+        validation_label.config(text=f"Sugu: {sugu}\nSünnipäev: {synna}", fg="green")
     else:
         validation_label.config(text="Sisesta isikukood vähemalt 11 tähemärki!", fg="red")
 
