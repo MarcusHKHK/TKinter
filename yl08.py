@@ -8,24 +8,31 @@ from tkinter import filedialog
 from pathlib import Path
 from PIL import Image, ImageOps
 
+selected_files = []
+
 #Avamine
 def open_directory():
     directory = filedialog.askdirectory()
-    if directory:
-        dir_label.config(text=f"Valitud kaust: {directory}")
-        kausta_sisu = os.listdir(directory)
-        for fail in kausta_sisu:
-            file_name, file_extension = os.path.splitext(fail)
-            if file_extension == ".jpg":
-                inputtxt.insert(tk.INSERT, fail+"\n")
-            if file_extension == ".jpeg":
-                inputtxt.insert(tk.INSERT, fail+"\n")
-    else:
-        dir_label.config(text="Kausta ei valitud.")
+    dir_label.config(text=f"Valitud kaust: {directory}")
+    kausta_sisu = os.listdir(directory)
+    for fail in kausta_sisu:
+        file_name, file_extension = os.path.splitext(fail)
+        if file_extension == ".jpg":
+            inputtxt.insert(tk.INSERT, fail+"\n")
+            selected_files.append(os.path.join(directory, fail))
+        if file_extension == ".jpeg":
+            inputtxt.insert(tk.INSERT, fail+"\n")  
+            selected_files.append(os.path.join(directory, fail))
+        print(selected_files)
 
 #Salvestamine
 def save_image():
-    pass
+    save_directory = filedialog.askdirectory()
+    for file in selected_files:
+        img = Image.open(file)
+        img = img.resize((200,200))
+        filename = os.path.basename(file)
+        img.save(os.path.join(save_directory, filename))
 
 
 aken = tk.Tk()
