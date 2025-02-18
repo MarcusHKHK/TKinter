@@ -1,10 +1,11 @@
-#Marcus Krutto 12.2.25 ; Tkinter harjutus 9
+#Marcus Krutto 18.2.25 ; Tkinter harjutus 9
 
 # Import
-import tkinter as tk
+import ttkbootstrap as tk
+from ttkbootstrap.constants import *
 
 # Window conf
-aken = tk.Tk()
+aken = tk.Window(themename="darkly")
 aken.geometry("250x400")
 aken.title("Pitsa")
 
@@ -64,7 +65,7 @@ valikud = ["Kuller", "Kohapeal"]
 selected_option = tk.StringVar()
 selected_option.set("Vali teenus")
 
-dropdown = tk.OptionMenu(aken, selected_option, *valikud)
+dropdown = tk.OptionMenu(aken, selected_option, *valikud, bootstyle="success")
 dropdown.pack()
 
 btn_confirm = tk.Button(aken, text="Arvuta hind", command=show_selection)
